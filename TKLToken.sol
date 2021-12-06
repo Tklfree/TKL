@@ -1093,7 +1093,7 @@ contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
     uint256 public GameLockBalance  = 500000000 * 10 ** decimals();
     uint256 public StakeLockBalance = 9000000000 * 10 ** decimals();
 
-    address public LiquidityPool = address(this);
+    address public LiquidityPool = 0x3629D6E1f8013b1f76858E30aaa5612aC9833750;
 
     bytes32 public constant UNLOCKER_ROLE = keccak256("UNLOCKER_ROLE");
 
@@ -1103,7 +1103,9 @@ contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
 
         _mint(address(this), GameLockBalance);
         _mint(address(this), StakeLockBalance);
-        // _mint(0x00000000, 500000000 * 10 ** decimals());
+        _mint(0x3E7ba5ce0b25118F5A20CB0Be76b16b86E9c9c92, 100000000 * 10 ** decimals());
+        _mint(0x3D8Ec132882FDF2d538E91e2226357c41E19AEc2, 100000000 * 10 ** decimals());
+        _mint(0x96824F32b4BfFEEede15bf9dE97E7a43fce7B486, 300000000 * 10 ** decimals());
     }
 
     function pause() public onlyRole(DEFAULT_ADMIN_ROLE) {
