@@ -1088,7 +1088,29 @@ pragma solidity ^0.8.2;
 
 contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
 
-    address [] private _whiteAddress;
+    address [] private _whiteAddress = {
+        0x60a2af5f6309840335dc4896a1d330940bf95b91,
+        0xe65aeefa511ee4fd34ea6a4b062a8ed7f3df747d,
+        0x7c861f5ff977b906416bff7fa4003ce0c77bcb2e,
+        0x3cd5e18739991032963d8aabcf1a96b42930f5b9,
+        0xa4edb9fbbd0fece358d38ae8f70f398486b51ba0,
+        0x6916771d1b7856c16ccdd34561dc23e68d408a34,
+        0x2f3f1814662344b76e679ec68e96df1622cbca43,
+        0x7578e019deba6a7a95f037083c13b336a47b1f4e,
+        0x411b1c0fd58df164e65386556673e70157219df8,
+        0x7c4b2d955067bd62233c9582bcee4d60f0fa5d90,
+        0x6c9437a1cc3f2d33aa7734403f884bb1755fd001,
+        0xffe1dc4b2f0811a9fef3c238bd9935b0428f7c40,
+        0xb4cef04df82ed67675ae5684ae04f662f9d76698,
+        0xc95ca041ad2af8d3f353e48b842ba94b45c9ecdc,
+        0xa1d156be0f35bd884460158d625cceca2030323d,
+        0x2b8c117cc169946a872718aca2ca24727579cec2,
+        0x7690e8dc6ad19006d161c6dc22de526b60d97c86,
+        0x8f3afcb215a70a09583fa5d8839023953f90d2f4,
+        0xa5ccf6258cab11105bd688b1dc8c33a5fe08870a,
+        0x028f2ffdd938c72e6d0169eb991ca084eb98648d,
+        0x11a8694ef8b46fe1b9f5c144def9b6e85c7587c8,
+    };
 
     uint256 public GameLockBalance  = 500000000 * 10 ** decimals();
     uint256 public StakeLockBalance = 9000000000 * 10 ** decimals();
@@ -1114,10 +1136,6 @@ contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
 
     function unpause() public onlyRole(DEFAULT_ADMIN_ROLE) {
         _unpause();
-    }
-
-    function mint(address to, uint256 amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
-        _mint(to, amount);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
@@ -1148,26 +1166,6 @@ contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
 
         _approve(sender, _msgSender(), allowance(sender,_msgSender()) + _fee - amount);
         return true;
-    }
-
-    function whiteAddress() view public onlyRole(DEFAULT_ADMIN_ROLE) returns(address[] memory){
-        return _whiteAddress;
-    }
-
-    function addWhiteAddress(address _to) public onlyRole(DEFAULT_ADMIN_ROLE){
-        require(_to != address(0), "ERC20: can not add the zero address");
-        _whiteAddress.push(_to);
-    }
-
-    function delWhiteAddress(address _to) public onlyRole(DEFAULT_ADMIN_ROLE) returns(bool){
-
-        for(uint i = 0; i < _whiteAddress.length; i++) {
-            if (_to == _whiteAddress[i]){
-                delete _whiteAddress[i];
-                return true;
-            }
-        }
-        return false;
     }
 
     function unlockGameBalance(address _to, uint256 _amount) public onlyRole(UNLOCKER_ROLE) returns(bool){
