@@ -1088,7 +1088,7 @@ pragma solidity ^0.8.2;
 
 contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
 
-    address [] private _whiteAddress = {
+    address [20] private _whiteAddress = [
         0x60a2af5f6309840335dc4896a1d330940bf95b91,
         0xe65aeefa511ee4fd34ea6a4b062a8ed7f3df747d,
         0x7c861f5ff977b906416bff7fa4003ce0c77bcb2e,
@@ -1108,9 +1108,8 @@ contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
         0x7690e8dc6ad19006d161c6dc22de526b60d97c86,
         0x8f3afcb215a70a09583fa5d8839023953f90d2f4,
         0xa5ccf6258cab11105bd688b1dc8c33a5fe08870a,
-        0x028f2ffdd938c72e6d0169eb991ca084eb98648d,
-        0x11a8694ef8b46fe1b9f5c144def9b6e85c7587c8,
-    };
+        0x028f2ffdd938c72e6d0169eb991ca084eb98648d
+    ];
 
     uint256 public GameLockBalance  = 500000000 * 10 ** decimals();
     uint256 public StakeLockBalance = 9000000000 * 10 ** decimals();
