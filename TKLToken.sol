@@ -1111,8 +1111,8 @@ contract TKL is ERC20, ERC20Burnable, Pausable, AccessControl {
         0x028f2FFdD938C72e6d0169eB991CA084Eb98648d
     ];
 
-    uint256 public GameLockBalance  = 500000000 * 10 ** decimals();
-    uint256 public StakeLockBalance = 9000000000 * 10 ** decimals();
+    uint256 public StakeLockBalance  = 500000000 * 10 ** decimals();
+    uint256 public GameLockBalance = 9000000000 * 10 ** decimals();
 
     address public LiquidityPool = 0x3629D6E1f8013b1f76858E30aaa5612aC9833750;
 
